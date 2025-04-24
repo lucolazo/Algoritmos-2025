@@ -3,15 +3,15 @@
 
 pila = [1, 2, 3, 6, 8, 7]
 
-def impares (pila):
+def impares (p):
     aux = []
     while pila:
-        elemento = pila.pop()
+        elemento = p.pop()
         if elemento % 2 == 0:
             aux.append(elemento)
         
     while aux:
-        pila.append(aux.pop())
+        p.append(aux.pop())
 
 impares(pila)
 print("La pila con números pares: ", pila)

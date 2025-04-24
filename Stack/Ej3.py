@@ -2,20 +2,20 @@
 
 pila = [1, 0, 1, 0, 1]
 
-def reemplazar (pila, viejo, nuevo):
+def reemplazar (p, viejo, nuevo):
     aux = []
 
-    while pila:
-        elemento = pila.pop()
+    while p:
+        elemento = p.pop()
         if elemento == viejo:
             aux.append(nuevo)
         else:
             aux.append(elemento)
 
     while aux:
-        pila.append(aux.pop())
+        p.append(aux.pop())
 
-    return(pila)
+    return(p)
 
 print("Pila original: ", pila)
 print("Pila modificada: ", reemplazar(pila, 1, 2))

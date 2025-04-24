@@ -1,0 +1,1 @@
+# '1:' para la cadena sin la primera letra

@@ -12,8 +12,6 @@ stack = Stack()
 
 stack.mostrar_elementos()
 
------------------------------------------------
-
 from typing import Any, Optional
 from random import randint
 
