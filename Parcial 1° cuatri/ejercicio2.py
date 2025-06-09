@@ -51,7 +51,7 @@ for superhero in superheroes:
         first_appearance=superhero["first_appearance"],
         is_villain=superhero["is_villain"],
     )
-    list_superhero.append(hero)
+    list_superhero.insert_value(hero)
 
 # a- Listado ordenado de manera ascendente por nombre de los personajes.
 print()
