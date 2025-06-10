@@ -24,7 +24,6 @@ def order_by_first_appearance(item):
     return item.first_appearance
 
 class Superhero:
-
     # Estructura del superhéroe
     def __init__(self, name, alias, real_name, short_bio, first_appearance, is_villain):
         self.name = name
@@ -33,7 +32,6 @@ class Superhero:
         self.short_bio = short_bio
         self.first_appearance = first_appearance
         self.is_villain = is_villain
-
 
     # Formato para imprimir
     def __str__(self):
@@ -132,22 +130,19 @@ for superheroe in list_superhero:
         print(superheroe.name)
 
 # j- Eliminar a Electro y Baron Zemo de la lista y mostrar su información si estaba en la lista.
+# Con función para evitar repetir código con c/u
+def eliminar_personaje(lista, nombre_personaje):
+    encontrado = False
+    for s in lista:
+        if s.name == nombre_personaje:
+            encontrado = True
+            print(f"Se ha eliminado a {nombre_personaje}.")
+            print(s)
+            lista.delete_value(nombre_personaje, "name")
+            break
+    if not encontrado:
+        print(f"No se ha encontrado a {nombre_personaje} en la lista.")
 print()
-encontrado_electro = False
-encontrado_baron = False
-for superheroe in list_superhero:
-    if superheroe.name == "Electro":
-        encontrado_electro = True
-        print()
-        print("Se ha eliminado a Electro.")
-        print(superheroe)
-        list_superhero.delete_value("Electro", "name")
-    if superheroe.name == "Baron Zemo":
-        encontrado_baron = True
-        print("Se ha eliminado a Baron Zemo.")
-        print(superheroe)
-        list_superhero.delete_value("Baron Zemo", "name")
-if not encontrado_electro:
-    print("No se ha encontrado a Electro en la lista.")
-if not encontrado_baron:
-    print("No se ha encontrado a Baron Zemo en la lista.")
+eliminar_personaje(list_superhero, "Electro")
+print()
+eliminar_personaje(list_superhero, "Baron Zemo")
