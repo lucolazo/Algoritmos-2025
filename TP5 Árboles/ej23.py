@@ -57,31 +57,16 @@ def info_talos(tree):
 info_talos(criaturas_tree)
 
 # d. determinar los 3 héroes o dioses que derrotaron mayor cantidad de criaturas;
-def top3_derrotadores(tree):
-    conteo = {} # Creamos un diccionario
+ranking_result = {} # Diccionario vacío para el ranking
 
-    def __rec(root):
-        if root is not None:
-            __rec(root.left)
-            derrotador = root.other_values.derrotada_por    # Guardamos el héroe/dios
-            if derrotador is not None:
-                conteo[derrotador] = conteo.get(derrotador, 0) + 1  # obtiene el valor actual del héroe y le suma 1
-            __rec(root.right)
+criaturas_tree.ranking(ranking_result)
 
-    __rec(tree.root)
+# Ordenamos el diccionario por cantidad de criaturas derrotadas, de mayor a menor, y tomamos los 3 primeros
+top3 = sorted(ranking_result.items(), key=lambda x: x[1], reverse=True)[:3]
 
-    # sorted((nombre, cantidad), ordenar por cantidad, descendente, tomar los 3 primeros)
-    top3 = sorted(conteo.items(), key=lambda x: x[1], reverse=True)[:3]
-    # sorted(): ordena una lista (o iterable) y devuelve una nueva lista ordenada.
-    # conteo.items(): convierte el diccionario en una lista de tuplas
-    # x: para referirse a una tupla. x[0] sería el nombre, y x[1] la cantidad.
-    # reverse=True: cambia el orden a descendente (de mayor a menor).
-
-    print("\n---- Top 3 héroes/dioses que derrotaron más criaturas ----")
-    for nombre, cantidad in top3:
-        print(f"{nombre}: {cantidad} criaturas derrotadas")
-
-top3_derrotadores(criaturas_tree)
+print("\n----- Ranking 3 héroes que derrotaron más criaturas -----")
+for hero, count in top3:
+    print(f"{hero}: {count}")
 
 # e. listar las criaturas derrotadas por Heracles;
 def derrotadas_heracles(tree):

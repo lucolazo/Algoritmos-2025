@@ -292,6 +292,21 @@ class BinaryTree:
         if self.root is not None:
             __in_order_weight(self.root)
 
+    def ranking(self, ranking_result):
+        def __ranking(root, ranking_result):
+            if root is not None:
+                __ranking(root.left, ranking_result)
+                hero = root.other_values.derrotada_por
+                if hero is not None:
+                    if hero not in ranking_result:
+                        ranking_result[hero] = 1
+                    else:
+                        ranking_result[hero] += 1
+                __ranking(root.right, ranking_result)
+
+        if self.root is not None:
+            __ranking(self.root, ranking_result)
+
 arbol = BinaryTree()
 arbol_heroes = BinaryTree()
 arbol_villanos = BinaryTree()
