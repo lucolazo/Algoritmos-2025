@@ -2,7 +2,7 @@ from typing import Any
 
 class HeapMax:
 
-    def _init_(self):
+    def __init__(self):
         self.elements = []
 
     def size(self) -> int:
@@ -67,7 +67,7 @@ class HeapMax:
 
 class HeapMin:
 
-    def _init_(self):
+    def __init__(self):
         self.elements = []
 
     def size(self) -> int:
