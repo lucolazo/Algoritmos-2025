@@ -91,18 +91,17 @@ def reconstruir_camino(stack, origen, destino):
     camino.reverse()
     return dist[destino], camino
 
-# Ejemplo C-3PO → R2-D2
+# Ejemplo de C-3PO a R2-D2
 stk = g.dijkstra("C-3PO")
 costo, camino = reconstruir_camino(stk, "C-3PO", "R2-D2")
 
-print("Camino más corto C-3PO → R2-D2:", camino, "Costo:", costo)
+print("Camino más corto de C-3PO a R2-D2:", camino, "Costo:", costo)
 
-# Ejemplo Yoda → Darth Vader
+# Ejemplo de Yoda a Darth Vader
 stk = g.dijkstra("Yoda")
 costo, camino = reconstruir_camino(stk, "Yoda", "Darth Vader")
 
-print("Camino más corto Yoda → Vader:", camino, "Costo:", costo)
-
+print("Camino más corto de Yoda a Darth Vader:", camino, "Costo:", costo)
 # f. indicar qué personajes aparecieron en los nueve episodios de la saga.
 print("\n--- Personajes en los nueve episodios ---")
 episodios = {
