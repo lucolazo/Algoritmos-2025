@@ -1,13 +1,25 @@
-# 14. Implementar sobre un casa no dirigido los algoritmos necesario para dar solución a las si-
+# Implementar sobre un grafo no dirigido los algoritmos necesario para dar solución a las si
 # guientes tareas:
+    #  a. cada vértice representar un ambiente de una casa: cocina, comedor, cochera, quincho,
+    # baño 1, baño 2, habitación 1, habitación 2, sala de estar, terraza, patio;
+    #  b. cargar al menos tres aristas a cada vértice, y a dos de estas cárguele cinco,
+    # el peso de la aris
+    # ta es la distancia entre los ambientes, se debe cargar en metros;
+    #  c. obtener el árbol de expansión mínima y determine cuantos metros de cables se necesitan
+    # para conectar todos los ambientes;
+    #  d. determinar cuál es el camino más corto desde la habitación 1 hasta la sala de estar para
+    # determinar cuántos metros de cable de red se necesitan para conectar el router con el
+    # Smart Tv.
 
-from graph import Graph
 import math
+from graph import Graph
 
-casa = Graph(is_directed=False) # casa NO dirigido
+# grafo NO dirigido
+casa = Graph(is_directed=False)
 
 def crear_casa(casa):
-    #a. cada vértice representar un ambiente de una casa: cocina, comedor, cochera, quincho, baño 1, baño 2, habitación 1, habitación 2, sala de estar, terraza, patio;
+    # a. cada vértice representar un ambiente de una casa: cocina, comedor, cochera, quincho,
+    # baño 1, baño 2, habitación 1, habitación 2, sala de estar, terraza, patio;
     ambientes = [
         "Cocina",
         "Comedor",
@@ -22,11 +34,11 @@ def crear_casa(casa):
         "Patio"
     ]
 
-    # Insertar ambientes como vértices
-    for amb in ambientes:
-        casa.insert_vertex(amb)
+    for a in ambientes:
+        casa.insert_vertex(a)
 
-    # b. cargar al menos tres aristas a cada vértice, y a dos de estas cárguele cinco, el weight de la arista es la distancia entre los ambientes, se debe cargar en metros;
+    # b. cargar al menos tres aristas a cada vértice, y a dos de estas cárguele cinco, el weight
+    # de la arista es la distancia entre los ambientes, se debe cargar en metros;
 
     conexiones = [
         # Cocina (5)
@@ -108,7 +120,7 @@ def crear_casa(casa):
 # c. obtener el árbol de expansión mínima y determine cuantos metros de cables se necesitan
 # para conectar todos los ambientes;
 def arbol_expansion_minima_metros(casa, vertice):
-    print("ÁRBOL DE EXPANSIÓN MÍNIMA: ")
+    print("Árbol de expansión mínima: ")
 
     expansion_tree = casa.kruskal(vertice)  # origen arbitrario
     total_metros = 0
@@ -120,14 +132,12 @@ def arbol_expansion_minima_metros(casa, vertice):
         print(f"{origin} -- {destination} ({weight} m)")
 
     print(f"Total de metros necesarios: {total_metros} m")
-    
-
 
 # d. determinar cuál es el camino más corto desde la habitación 1 hasta la sala de estar para
 # determinar cuántos metros de cable de red se necesitan para conectar el router con el
 # Smart Tv.
 def habitacion1_sala(casa):
-    path = casa.dijkstra('Habitacion1') 
+    path = casa.dijkstra('Habitacion1')
     destination = 'SalaEstar'
     peso_total = None
     camino_completo = []
@@ -150,11 +160,11 @@ def habitacion1_sala(casa):
 
     return resultados
 
-#MAIN:
+
 casa = crear_casa(casa)
-# casa.show()
+
 print()
-arbol_expansion_minima_metros(casa,"Cocina") #elijo por ejemplo la cocina
-print()
-print("El camino más corto desde la habitación 1 hasta la sala de estar para determinar cuántos metros de cable de red se necesitan para conectar el router con el Smart Tv: ")
+arbol_expansion_minima_metros(casa,"Cocina")
+
+print("\nCamino más corto desde la habitación 1 hasta la sala de estar: ")
 print(habitacion1_sala(casa))
